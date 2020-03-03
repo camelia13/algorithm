@@ -94,7 +94,7 @@ for t in range(1,T+1):
         elif c == 2:
             for i in range(c1, c2+1):
                 for j in range(r1, r2+1):
-                        L[i][j] += 2
+                    L[i][j] += 2
 
     for l in L:
         cnt += l.count(3)
