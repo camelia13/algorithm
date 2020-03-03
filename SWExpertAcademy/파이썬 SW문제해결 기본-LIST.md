@@ -75,3 +75,30 @@ for j in range(T):
     print('#%d %d'%(j+1, cnt))
 
 ```
+### LIST2
+```python
+# 4836. 색칠하기
+T = int(input())
+
+for t in range(1,T+1):
+    N = int(input())
+    L = [[0] * 10 for _ in range(10)]
+    cnt = 0
+    for _ in range(N):
+        r1,c1,r2,c2,c = map(int, input().split())
+
+        if c == 1:
+            for i in range(c1, c2+1):
+                for j in range(r1, r2+1):
+                    L[i][j] += 1
+        elif c == 2:
+            for i in range(c1, c2+1):
+                for j in range(r1, r2+1):
+                        L[i][j] += 2
+
+    for l in L:
+        cnt += l.count(3)
+
+    print("#{} {}".format(t, cnt))
+
+```
