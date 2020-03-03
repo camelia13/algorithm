@@ -120,5 +120,33 @@ for t in range(1,T+1):
             cnt += 1
 
     print("#{} {}".format(t, cnt))
+    
+# 4839. 이진탐색
+def binarySearch(low, high, key, cnt): # 이진 검색 재귀함수로 구현
+    if low > high:
+        return False
+    else:
+        middle = (low + high) // 2
+        if key == middle:
+            print(cnt)
+            return cnt
+        elif key < middle:
+            return binarySearch(low, middle-1, key, cnt+1)
+        elif key > middle:
+            return binarySearch(middle+1, high, key, cnt+1)
+
+T = int(input())
+
+for t in range(1,T+1):
+    P, A, B = map(int, input().split())
+    CA = binarySearch(1, P, A, 0)
+    CB = binarySearch(1, P, B, 0)
+
+    if CA > CB:
+        print("#{} B".format(t))
+    elif CA < CB:
+        print("#{} A".format(t))
+    else:
+        print("#{} 0".format(t))
 
 ```
