@@ -100,5 +100,25 @@ for t in range(1,T+1):
         cnt += l.count(3)
 
     print("#{} {}".format(t, cnt))
+    
+# 4837. 부분집합의 합
+T = int(input())
+arr = list(range(1, 13))
+n = len(arr)
+
+for t in range(1,T+1):
+    N, K = map(int, input().split())
+    cnt = 0
+
+    for i in range(1<<n):
+        L = []
+        for j in range(n):
+            if i&(1<<j):
+                L.append(arr[j])
+
+        if len(L) == N and sum (L) == K:
+            cnt += 1
+
+    print("#{} {}".format(t, cnt))
 
 ```
