@@ -34,7 +34,6 @@ def Boyer_Moore(pattern, text):
     N = len(pattern)
     M = len(text)
     j = 0
-    i = N - 1
     while i > 0 and j < M:
         if pattern[i] != text[j]:
             j += N - 1 - i
