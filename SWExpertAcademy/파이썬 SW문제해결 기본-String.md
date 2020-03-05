@@ -12,9 +12,7 @@ for t in range(1, T+1):
     str2 = input()
     N = len(str1)
     M = len(str2)
-    shift = []
-    for i in range(N-1, -1, -1):
-        shift.append(i)
+
 
     j = 0
     i = N - 1
