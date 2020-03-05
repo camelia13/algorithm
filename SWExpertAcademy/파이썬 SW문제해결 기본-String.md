@@ -30,18 +30,16 @@ for t in range(1, T+1):
     
 ## 보이어 무어 검색 알고리즘 구현
 # 찾으면 1 못 찾으면 -1 반환
-def Boyer_Moore(str1, str2):
-    # str1 = input()
-    # str2 = input()
-    N = len(str1)
-    M = len(str2)
+def Boyer_Moore(pattern, text):
+    N = len(pattern)
+    M = len(text)
     j = 0
     i = N - 1
     while i > 0 and j < M:
-        if str1[i] != str2[j]:
+        if pattern[i] != text[j]:
             j += N - 1 - i
             i = N - 1
-            if str2[j] not in str1:
+            if text[j] not in pattern:
                 j += N
             else:
                 j += 1
