@@ -12,15 +12,18 @@ for t in range(1, T+1):
     str2 = input()
     N = len(str1)
     M = len(str2)
+    shift = list(str1)
+    shift.reverse()
+
     j = 0
     i = N - 1
     while i > 0 and j < M:
         if str1[i] != str2[j]:
-            j += N - 1 - i
             i = N -1
             if str2[j] not in str1:
                 j += N
-            else: j += 1
+            else:
+                j += shift.index(str2[j])
         else:
             i -= 1
             j -= 1
@@ -33,7 +36,11 @@ for t in range(1, T+1):
 def Boyer_Moore(pattern, text):
     N = len(pattern)
     M = len(text)
+    shift = list(pattern)
+    shift.reverse()
+    
     j = 0
+    i = N - 1
     while i > 0 and j < M:
         if pattern[i] != text[j]:
             j += N - 1 - i
@@ -41,7 +48,7 @@ def Boyer_Moore(pattern, text):
             if text[j] not in pattern:
                 j += N
             else:
-                j += 1
+                j += shift.index(text[j])
         else:
             i -= 1
             j -= 1
