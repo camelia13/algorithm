@@ -30,4 +30,30 @@ for t in range(1, T + 1):
     str1 = input()
     str2 = input()
     print("#{} {}".format(t, Boyer_Moore(str1, str2)))
+
+# 4861. 회문
+T = int(input())
+for t in range(1, T+1):
+    N, M = map(int, input().split())
+    L = []
+    for _ in range(N):
+        l = list(input())
+        L.append(l)
+
+    for l in L:
+        i = 0
+        while i <= N-M:
+            valid = l[i:M+i]
+            if valid == valid[::-1]:
+                print("#{} {}".format(t, ''.join(valid)))
+            i += 1
+
+    L_t = list(zip(*L)) # 2-d matrix transpose
+    for l in L_t:
+        i = 0
+        while i <= N-M:
+            valid = l[i:M+i]
+            if valid == valid[::-1]:
+                print("#{} {}".format(t, ''.join(valid)))
+            i += 1
 ```
