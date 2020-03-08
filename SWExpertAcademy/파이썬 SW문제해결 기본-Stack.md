@@ -44,4 +44,30 @@ for t in range(1, T + 1):
     if not L and sent:
         valid = 1
     print("#{} {}".format(t, valid))
+
+# 4871. 그래프 경로
+T = int(input())
+for t in range(1, T+1):
+    V, E = map(int, input().split())
+    graph = {}
+    for _ in range(E):
+        k, v = input().split()
+        graph[k] = {v} | (set() if graph.get(k) is None else graph[k])
+    start, end = input().split()
+    stack = [(start, [start])]
+    result = []
+    valid = 0
+    while stack:
+        n, path = stack.pop()
+        if n == end:
+            result.append(path)
+            break
+        else:
+            try:
+                for m in (graph[n] - set(path)):
+                    stack.append((m, path + [m]))
+            except: pass
+    if result:
+        valid = 1
+    print("#{} {}".format(t, valid))
 ```
