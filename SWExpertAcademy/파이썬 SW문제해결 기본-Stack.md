@@ -18,7 +18,7 @@ for t in range(1, T+1):
     N = int(input()) // 10
     print("#{} {}".format(t, count_paper(N)))
 
-# 4866. 
+# 4866. 괄호검사
 T = int(input())
 for t in range(1, T + 1):
     sent = input()
