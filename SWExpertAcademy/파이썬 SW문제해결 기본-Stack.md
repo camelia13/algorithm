@@ -7,7 +7,7 @@
 def count_paper(N):
     if N > 1:
         if N % 2 == 0:
-            return count_paper(N-1) * 2 + 1
+            return count_paper(N-1) * 2 + 1 # 사실 수학 문제에 가깝다
         else:
             return count_paper(N-1) * 2 - 1
     else:
@@ -29,17 +29,17 @@ for t in range(1, T + 1):
         if c == '(' or c == '{':
             L.append(c)
         elif c == ')' or c == '}':
-            if not L:
+            if not L: # 닫기 괄호가 열기 괄호보다 먼저 나온 경우 검사 
                 L = 'error'
                 break
             elif c == ')' and L[-1] == '(':
                 a += L.pop()
             elif c == '}' and L[-1] == '{':
                 a += L.pop()
-            else:
+            else: # 이 부분 없으면 test case 10번째에서 실패한다. 근데 왜 필요하지??
                 L.append(c)
                 break
-    if not a:
+    if not a: # 공백만 입력으로 넣어준 경우 검사
         L = 'empty'
     if not L and sent:
         valid = 1
@@ -52,7 +52,7 @@ for t in range(1, T+1):
     graph = {}
     for _ in range(E):
         k, v = input().split()
-        graph[k] = {v} | (set() if graph.get(k) is None else graph[k])
+        graph[k] = {v} | (set() if graph.get(k) is None else graph[k]) # '|'은 합집합 기호
     start, end = input().split()
     stack = [(start, [start])]
     result = []
