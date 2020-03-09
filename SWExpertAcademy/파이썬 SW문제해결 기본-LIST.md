@@ -13,7 +13,7 @@ for j in range(T):
     L = [0] * N
     X = K
 
-    for i in range(len(ind)):
+    for i in range(len(ind)): # 마지막 정류소는 검사하지 않는다. 비효율적인 코드
         try:
             if ind[i] > X:
                 L[ind[i-1]] = 1
@@ -30,7 +30,7 @@ for j in range(T):
             L = [0] * N
             break
 
-    indices = [i for i, x in enumerate(L) if x == 1]
+    indices = [i for i, x in enumerate(L) if x == 1] # 리스트 L의 값이 1인 인덱스를 가져옴
     for i in range(len(indices)-1):
         if indices[i+1] - indices[i] > K:
             L = [0] * N
@@ -57,7 +57,7 @@ for j in range(T):
 
     while True:
         valid = 0
-        for i in range(s+1, e+1):
+        for i in range(s+1, e+1): # for loop로 정류소 사이에서 사이클 돌린다.
             if L[i] == 1:
                 s = i
             else:
@@ -88,7 +88,7 @@ for t in range(1,T+1):
         r1,c1,r2,c2,c = map(int, input().split())
 
         if c == 1:
-            for i in range(c1, c2+1):
+            for i in range(c1, c2+1): 
                 for j in range(r1, r2+1):
                     L[i][j] += 1
         elif c == 2:
@@ -110,7 +110,7 @@ for t in range(1,T+1):
     N, K = map(int, input().split())
     cnt = 0
 
-    for i in range(1<<n):
+    for i in range(1<<n): # 강의에 나온 부분집합 구하는 코드 이해안됨. 외워야할듯
         L = []
         for j in range(n):
             if i&(1<<j):
@@ -128,7 +128,6 @@ def binarySearch(low, high, key, cnt): # 이진 검색 재귀함수로 구현
     else:
         middle = (low + high) // 2
         if key == middle:
-            print(cnt)
             return cnt
         elif key < middle:
             return binarySearch(low, middle-1, key, cnt+1)
