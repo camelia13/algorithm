@@ -58,7 +58,7 @@ for t in range(1, T+1):
     result = []
     valid = 0
     while stack:
-        n, path = stack.pop()
+        n, path = stack.pop() # dfs (cf. bfs: queue.pop(0))
         if n == end:
             result.append(path)
             break
