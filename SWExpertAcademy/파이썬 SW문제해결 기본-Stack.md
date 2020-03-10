@@ -71,3 +71,30 @@ for t in range(1, T+1):
         valid = 1
     print("#{} {}".format(t, valid))
 ```
+
+### Stack2
+```python
+# 4874. Forth
+def operator(op, n1, n2):
+    return {'+':n1+n2, '-':n1-n2, '*':n1*n2, '/':int(n1/n2)}[op] # 이 문제에서는 정수로 받아야함
+
+T = int(input())
+for t in range(1, T+1):
+    formula = list(input().split())
+    num = []
+    try:
+        for i in range(len(formula)):
+            if formula[i].isdigit():
+                num.append(int(formula[i]))
+            elif formula[i] == '.':
+                if len(num) == 1:
+                    v = num.pop()
+                else:
+                    v = 'error'
+            else:
+                a2, a1 = num.pop(), num.pop()
+                num.append(operator(formula[i], a1, a2))
+    except:
+        v = 'error'
+    print("#{} {}".format(t, v))
+```
